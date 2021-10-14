@@ -3,11 +3,13 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
-
- const app = express();
+import postRoutes from './routes/posts.js'
+ 
+const app = express();
 // 
 // const MongoClient = require('mongodb').MongoClient;
 // const assert = require('assert');
+app.use('/posts', postRoutes);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
