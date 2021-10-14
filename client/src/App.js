@@ -6,15 +6,17 @@ import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core'
 
 import Posts from './components/Posts/Posts';
 import Form from './components/Form/Form';
+import useStyles from './styles';
 
 
 // Become familar with @material-ui and implement front end desing and styling
-
+// In the components -> Form -> styles.js ||| add styling as necessary. Same for all components in folder.
 const App = () => {
+    const classes= useStyles();
     return (
         <Container maxWidth="lg">
-            <AppBar position="static" color="inherit">
-                <Typography variant="h2" align="center">Bookish</Typography>
+            <AppBar className={classes.appBar} position="static" color="inherit">
+                <Typography className={classes.heading} variant="h2" align="center">Bookish</Typography>
             </AppBar>
             <Grow in>
                 <Container>
