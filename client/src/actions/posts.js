@@ -2,7 +2,7 @@
 import * as api from '../api';
 
 // action creatores - functions that return actions
-const getPosts = () => async (dispatch) => {
+export const getPosts = () => async (dispatch) => {
 
     try {
         const { data } = await api.fetchPosts();
