@@ -20,6 +20,10 @@ app.use(cors());
 
 app.use('/posts', postRoutes);
 
+app.get('/', (req, res) => {
+    req.setEncoding('Bookish');
+});
+
 
 // Connect app to mongodb on cloud atlas
 
@@ -34,3 +38,6 @@ mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: tr
 // This makes sure we dont get any warnings in the console. App crashes if implemented. Error: `useFindAndModify` is an invalid option.
 //mongoose.set('useFindAndModify', false);
 
+if (process.env === 'production') {
+    app.use(express.static('client/build'));
+}
