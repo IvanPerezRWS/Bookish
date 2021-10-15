@@ -6,7 +6,11 @@ import cors from 'cors';
 
 import postRoutes from './routes/posts.js'
 
+import dotenv from 'dotenv';
+
 const app = express();
+
+dotenv.config();
 
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
