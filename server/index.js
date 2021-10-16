@@ -6,6 +6,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import postRoutes from './routes/posts.js';
 
+import dotenv from 'dotenv';
+
 const app = express();
 dotenv.config();
 
@@ -13,9 +15,17 @@ dotenv.config();
 // app.use(bodyParser.urlencoded({limit: '30mb', extended:true}))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+dotenv.config();
+
+
 app.use(cors());
 
 app.use('/posts', postRoutes);
+
+app.get('/', (req, res) => {
+    req.setEncoding('Bookish');
+});
 
 
 
@@ -32,3 +42,6 @@ mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnified
 // This makes sure we dont get any warnings in the console. App crashes if implemented. Error: `useFindAndModify` is an invalid option.
 // mongoose.set('useFindAndModify', false);
 
+if (process.env === 'production') {
+    app.use(express.static('client/build'));
+}
