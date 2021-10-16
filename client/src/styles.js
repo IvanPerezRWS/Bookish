@@ -15,5 +15,5 @@ export default makeStyles(() => ({
   },
   image: {
     marginLeft: '15px',
-  },
+    transform: [{ rotate: '20deg' }]  },
 }));
